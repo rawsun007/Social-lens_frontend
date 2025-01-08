@@ -1,0 +1,179 @@
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px); /* Start from the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* End at the normal position */
+  }
+}
+
+.message.bot .message-bubble {
+  background-color: #e3f2fd; /* Light blue for bot messages */
+  border-top-left-radius: 0;
+  animation: slideInFromLeft 0.5s ease-out; /* Apply animation to the bot's bubble */
+}
+
+/* Optional: Add smooth fade-in effect for the entire message */
+.message.bot {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards 0.3s; /* Delay the message appearance */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.message.user {
+  justify-content: flex-start;
+}
+
+.message.bot {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 15px 20px;
+  max-width: 70%;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  white-space: pre-wrap; /* Preserve line breaks */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for bubble */
+  position: relative;
+}
+
+.message .message-bubble {
+  color: #333;
+}
+
+.message .message-bubble strong {
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: disc;
+  margin: 0;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* User and Bot Message Differentiation */
+.message.user .message-bubble {
+  background-color: #e8f5e9; /* Light green for user messages */
+  border-top-right-radius: 0;
+}
+
+.message.bot .message-bubble {
+  background-color: #e3f2fd; /* Light blue for bot messages */
+  border-top-left-radius: 0;
+}
+
+.message-user {
+  justify-content: flex-start;
+}
+
+.message-bot {
+  justify-content: flex-end;
+}
+.chat-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+.chat-window {
+  margin-top: 8rem;
+  overflow-y: auto;
+  width: 100%;
+  height: 72vh;
+  padding: 1rem;
+  border: 2px solid black;
+
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.chat-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  padding: 0.5rem;
+}
+
+.chat-form input {
+  width: 90%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* .chat-form button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+} */
+
+/* General styling for the messages */
+.message {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+/* Styling for bot's message */
+.message.bot {
+  flex-direction: row-reverse; /* Align the bot message to the left */
+}
+
+/* Styling for user's message */
+.message.user {
+  flex-direction: row-reverse; /* Align the user's message to the right */
+}
+
+/* Avatar styling */
+
+/* Specific bot avatar */
+
+/* Styling for the message bubble */
+.message-bubble {
+  max-width: 70%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 15px;
+  word-wrap: break-word;
+}
+
+/* Styling for bot's message bubble */
+.message.bot .message-bubble {
+  background-color: #e0e0e0; /* Light gray for bot messages */
+}
+
+/* Styling for user's message bubble */
+.message.user .message-bubble {
+  background-color: #c6f5c7; /* Light green for user messages */
+}
