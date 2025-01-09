@@ -42,7 +42,7 @@ function Chat() {
       // If there is an error fetching from the bot, show this message
       const errorMessage = {
         sender: "bot",
-        text: "Error: Unable to fetch response from the bot.",
+        text: "Apologies for the inconvenience, but we’re currently unable to retrieve a response from the bot. We deeply appreciate your patience and kindly ask you to try again shortly. Thank you for your understanding.",
       };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     } finally {
