@@ -1,8 +1,33 @@
-# React + Vite
+# Frontend - Social Lens
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend for the Social Lens project, built for the Level Supermind Hackathon. The application provides an interactive user interface to display insights about social media engagement, including an AI chatbot for personalized assistance.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Interactive and user-friendly dashboard for engagement insights.
+- AI chatbot for dynamic assistance and data queries.
+- Integration with the backend API for fetching and displaying insights.
+
+## Tech Stack
+
+- **React.js** - For building the user interface.
+- **Vite** - As the development environment and build tool.
+- **HTML & CSS** - For structure and styling.
+- **Tailwind CSS** - For utility-first styling.
+
+## Installation and Deployment
+
+Run the following commands step by step to install, configure, and deploy the application:
+
+```bash
+# Install dependencies
+npm install
+
+# Create the environment file
+echo "VITE_API_BASE_URL=http://localhost:5000/api" > .env
+
+# Start the development server
+npm run dev
+
+# Build for deployment
+npm run build

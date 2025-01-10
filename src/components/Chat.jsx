@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import Message from "./Message";
 import "../index.css";
 import "../App.css";
 
@@ -26,7 +25,7 @@ function Chat() {
 
     try {
       const response = await axios.post(
-        " https://social-lens-backend.onrender.com/chat/analyze",
+        "https://social-lens-backend.onrender.com/chat/analyze",
         {
           message: userInput,
         }
@@ -52,46 +51,49 @@ function Chat() {
 
   // Auto scroll to the bottom when new messages are added
   useEffect(() => {
-    chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    if (chatWindowRef.current) {
+      chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    }
   }, [messages]);
 
   return (
     <>
-      <div className="chat-container">
-        <div
-          className="chat-window bg-gradient-to-b from-purple-900/20 to-black z-0"
-          ref={chatWindowRef}
-        >
-          {messages.map((msg, index) => (
-            <Message key={index} sender={msg.sender} text={msg.text} />
-          ))}
-          {isTyping && (
-            <div className="message bot">
-              <div className="message-bubble typing-indicator">
-                Bot is typing...
-              </div>
+      <div className="main-container">
+        <div className="chat-interface text-lg">
+          <div className="chat-header">
+            <div className="header-avatar">
+              <div className="bot-eye" />
             </div>
-          )}
+            <h2 className="font-bold text-2xl text-white">
+              Social Media Analyst
+            </h2>
+          </div>
+          <div className="messages-container" ref={chatWindowRef}>
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={message.sender === "user" ? "user" : "bot"}
+              >
+                {message.text}
+              </div>
+            ))}
+            {isTyping && <div className="bot rounded">Bot is typing...</div>}
+          </div>
+          <div className="input-container">
+            <form className="input-group" onSubmit={handleSendMessage}>
+              <input
+                type="text"
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                placeholder="Type your message..."
+                className="chat-input text-lg"
+              />
+              <button type="submit" className="send-btn ">
+                Send
+              </button>
+            </form>
+          </div>
         </div>
-
-        <form
-          onSubmit={handleSendMessage}
-          className="chat-form flex items-center justify-center mb-3"
-        >
-          <input
-            type="text"
-            placeholder="Type here"
-            className="input input-bordered input-info w-full rounded"
-            value={userInput} // Bind the input value
-            onChange={(e) => setUserInput(e.target.value)} // Update state on change
-          />
-          <button
-            type="submit" // Specify button type for form submission
-            className="btn btn-outline btn-info ml-3"
-          >
-            Send
-          </button>
-        </form>
       </div>
     </>
   );
