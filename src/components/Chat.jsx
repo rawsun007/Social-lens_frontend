@@ -66,18 +66,22 @@ function Chat() {
           </div>
           <div className="messages-container" ref={chatWindowRef}>
             {messages.map((message, index) => (
-              <Message key={index} sender={message.sender} text={message.text} />
+              <Message
+                key={index}
+                sender={message.sender}
+                text={message.text}
+              />
             ))}
             {isTyping && <div className="bot rounded">Bot is typing...</div>}
           </div>
           <div className="input-container">
-            <form className="input-group" onSubmit={handleSendMessage}>
+            <form className="input-group text-lg" onSubmit={handleSendMessage}>
               <input
                 type="text"
                 value={userInput}
                 onChange={(e) => setUserInput(e.target.value)}
                 placeholder="Type your message..."
-                className="chat-input text-lg"
+                className="chat-input text-lg text-white size-11 px-3 "
               />
               <button type="submit" className="send-btn">
                 Send

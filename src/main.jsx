@@ -1,23 +1,31 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router'
-import Layout from './components/Layout.jsx'
-import Home from './components/Home.jsx'
-import  Chat from "./components/Chat.jsx";
-import App from './App.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Chat from "./components/Chat.jsx";
+import Navbar from "./components/Navbar.jsx";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
-      <Route path="" element={<Home />} />
-      <Route path="AnalyzerForm" element={<Chat/>} />
-      <Route path="App" element={<App />} />
-    </Route>
-  )
-)
+// Common layout to display Navbar and child routes
+const Layout = () => (
+  <>
+    <Navbar />
+    <Outlet /> {/* This will render the child route components */}
+  </>
+);
 
-createRoot(document.getElementById('root')).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true, // Default child route for "/"
+        element: <Chat />,
+      },
+    ],
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>
